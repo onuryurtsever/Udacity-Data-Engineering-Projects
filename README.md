@@ -1,4 +1,4 @@
-# Udacity Data Engineering Nanodegree Program Projects
+# Udacity Data Engineering Nanodegree Program
 
 Udacity Data Engineering Nanodegree Solutions in 2021
 
