@@ -1,6 +1,6 @@
 # Udacity Data Engineering Nanodegree Program Projects
 
-This repository contains my solutions to the course "Udacity Data Engineering Nanodegree" in summer 2019
+Udacity Data Engineering Nanodegree Solutions in 2021
 
 # Projects
 
