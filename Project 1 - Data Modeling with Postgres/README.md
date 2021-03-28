@@ -1,4 +1,4 @@
-# Sparkify Project (Data Modelling with Postgres)
+# Sparkify Project (Data Modeling with Postgres)
 
 ## Introduction
 
