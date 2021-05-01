@@ -8,4 +8,4 @@ Project | Title | Description | Status
 ------------ | ------------- | ------------- | -------------
 **[Project 1](Project%201%20-%20Data%20Modeling%20with%20Postgres)** | Data Modeling with Postgres | ETL pipeline in RDMS using Python on Jupyter | :heavy_check_mark:
 **[Project 2](Project%202%20-%20Data%20Modeling%20with%20Apache%20Cassandra)** | Data Modeling with Apache Cassandra | ETL pipeline in NoSQL using Python on Jupyter | :heavy_check_mark:
-**[Project 3](Project%203%20-%20Data%20Modeling%20with%20Amazon%20Redshift)** | Data Modeling with Amazon Redshift | ETL pipeline in AWS Redshift using Python on Jupyter | :heavy_check_mark:
+**[Project 3](Project%203%20-%20Data%20Modeling%20with%20Amazon%20Redshift)** | Data Modeling with AWS Redshift | ETL pipeline in AWS Redshift using Python on Jupyter | :heavy_check_mark:
