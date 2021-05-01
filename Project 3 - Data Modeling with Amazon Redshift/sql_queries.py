@@ -1,0 +1,209 @@
+import configparser
+
+
+# CONFIG
+config = configparser.ConfigParser()
+config.read('dwh.cfg')
+
+# DROP TABLES
+
+staging_events_table_drop = "drop table if exists stg_events"
+staging_songs_table_drop = "drop table if exists stg_songs"
+songplay_table_drop = "drop table if exists songplay"
+user_table_drop = "drop table if exists users"
+song_table_drop = "drop table if exists songs"
+artist_table_drop = "drop table if exists artists"
+time_table_drop = "drop table if exists time"
+
+# CREATE TABLES
+
+staging_events_table_create = ("""
+create table if not exists stg_events (
+record_id int IDENTITY(0,1),
+artist varchar,
+auth varchar,
+firstName varchar,
+gender varchar(1),
+itemInSession int,
+lastName varchar,
+length float,
+level varchar,
+location varchar,
+method varchar,
+page varchar,
+registration varchar,
+sessionId int,
+song varchar,
+status int,
+ts timestamp,
+userAgent varchar,
+userId int,
+primary key (record_id)
+)
+""")
+
+staging_songs_table_create = ("""
+create table if not exists stg_songs (
+num_songs int,
+artist_id varchar,
+artist_latitude float,
+artist_longitude float,
+artist_location varchar,
+artist_name varchar,
+song_id varchar,
+title varchar,
+duration float,
+year int,
+primary key (song_id)
+)
+""")
+
+songplay_table_create = ("""
+create table if not exists songplay (
+songplay_id int IDENTITY(0,1),
+start_time timestamp,
+user_id int,
+level varchar,
+song_id varchar,
+artist_id varchar,
+session_id int,
+location varchar,
+user_agent varchar,
+primary key (songplay_id)
+)
+""")
+
+user_table_create = ("""
+create table if not exists users (
+user_id int,
+first_name varchar,
+last_name varchar,
+gender varchar(1),
+level varchar,
+primary key (user_id)
+)
+""")
+
+song_table_create = ("""
+create table if not exists songs (
+song_id varchar,
+title varchar,
+artist_id varchar,
+year int,
+duration float,
+primary key (song_id)
+)
+""")
+
+artist_table_create = ("""
+create table if not exists artists (
+artist_id varchar,
+name varchar,
+location varchar,
+latitude float,
+longitude float,
+primary key (artist_id)
+)
+""")
+
+time_table_create = ("""
+create table if not exists time (
+start_time timestamp,
+hour int,
+day int,
+week int,
+month int,
+year int,
+weekday int,
+primary key (start_time)
+)
+""")
+
+# STAGING TABLES
+
+staging_events_copy = ("""
+COPY stg_events
+FROM {}
+IAM_ROLE {}
+FORMAT AS json {}
+TIMEFORMAT as 'epochmillisecs';
+""").format(config['S3']['LOG_DATA'],config['IAM_ROLE']['ARN'],config['S3']['LOG_JSONPATH'])
+
+staging_songs_copy = ("""
+COPY stg_songs
+FROM {}
+IAM_ROLE {}
+FORMAT AS json 'auto';
+""").format(config['S3']['SONG_DATA'],config['IAM_ROLE']['ARN'])
+
+# FINAL TABLES
+
+songplay_table_insert = ("""
+insert into songplay (start_time,user_id,level,song_id,artist_id,session_id,location,user_agent)
+select
+events.ts start_time,
+events.userId user_id,
+events.level,
+songs.song_id,
+songs.artist_id,
+events.sessionId session_id,
+events.location,
+events.userAgent user_agent
+from stg_events events inner join stg_songs songs
+on events.song=songs.title
+and events.artist=songs.artist_name
+where events.Page='NextSong'
+""")
+
+user_table_insert = ("""
+insert into users (user_id,first_name,last_name,gender,level)
+select distinct
+userId,
+firstName,
+lastName,
+gender,
+level
+from stg_events where UserId is not null
+""")
+
+song_table_insert = ("""
+insert into songs (song_id,title,artist_id,year,duration)
+select distinct
+song_id,
+title,
+artist_id,
+year,
+duration
+from stg_songs
+""")
+
+artist_table_insert = ("""
+insert into artists (artist_id,name,location,latitude,longitude)
+select distinct
+artist_id,
+artist_name,
+artist_location,
+artist_latitude,
+artist_longitude
+from stg_songs where artist_id is not null
+""")
+
+time_table_insert = ("""
+insert into time (start_time,hour,day,week,month,year,weekday)
+select distinct
+ts start_time,
+extract(hour from ts),
+extract(day from ts),
+extract(week from ts),
+extract(month from ts),
+extract(year from ts),
+extract(weekday from ts)
+from stg_events
+""")
+
+# QUERY LISTS
+
+create_table_queries = [staging_events_table_create, staging_songs_table_create, songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
+drop_table_queries = [staging_events_table_drop, staging_songs_table_drop, songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
+copy_table_queries = [staging_events_copy, staging_songs_copy]
+insert_table_queries = [songplay_table_insert, user_table_insert, song_table_insert, artist_table_insert, time_table_insert]
