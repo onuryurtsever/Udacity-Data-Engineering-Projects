@@ -166,7 +166,7 @@ events.userAgent user_agent
 from stg_events events inner join stg_songs songs
 on events.song=songs.title
 and events.artist=songs.artist_name
-where events.Page='NextSong'
+where events.page='NextSong'
 """)
 
 user_table_insert = ("""
@@ -177,7 +177,9 @@ firstName,
 lastName,
 gender,
 level
-from stg_events where UserId is not null
+from stg_events
+where UserId is not null
+and page='NextSong'
 """)
 
 song_table_insert = ("""
@@ -189,6 +191,7 @@ artist_id,
 year,
 duration
 from stg_songs
+where song_id is not null
 """)
 
 artist_table_insert = ("""
@@ -199,7 +202,8 @@ artist_name,
 artist_location,
 artist_latitude,
 artist_longitude
-from stg_songs where artist_id is not null
+from stg_songs
+where artist_id is not null
 """)
 
 time_table_insert = ("""
@@ -213,6 +217,8 @@ extract(month from ts),
 extract(year from ts),
 extract(weekday from ts)
 from stg_events
+where ts is not null
+and page='NextSong'
 """)
 
 # QUERY LISTS
