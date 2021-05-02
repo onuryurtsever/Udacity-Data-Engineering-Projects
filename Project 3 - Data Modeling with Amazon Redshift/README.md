@@ -78,4 +78,8 @@ This projects aims to create ETL pipeline that extracts their data from S3, stag
 
 * select a.name as Artist, s.title as Song from songs s inner join artists a on s.artist_id=a.artist_id
 
+## Some Tips
+
+You can improve and optimize query performance by using **"DISTKEY"** and **"SORTKEY"** instead of transactional database indexes since Amazon Redshift is a columnar database with compressed storage.
+
 # THE END
