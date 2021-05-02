@@ -61,8 +61,8 @@ primary key (song_id)
 songplay_table_create = ("""
 create table if not exists songplay (
 songplay_id int IDENTITY(0,1),
-start_time timestamp,
-user_id int,
+start_time timestamp not null,
+user_id int not null,
 level varchar,
 song_id varchar,
 artist_id varchar,
@@ -88,7 +88,7 @@ song_table_create = ("""
 create table if not exists songs (
 song_id varchar,
 title varchar,
-artist_id varchar,
+artist_id varchar not null,
 year int,
 duration float,
 primary key (song_id)
