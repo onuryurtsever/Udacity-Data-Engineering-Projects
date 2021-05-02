@@ -61,7 +61,7 @@ primary key (song_id)
 songplay_table_create = ("""
 create table if not exists songplay (
 songplay_id int IDENTITY(0,1),
-start_time timestamp not null,
+start_time timestamp not null SORTKEY DISTKEY,
 user_id int not null,
 level varchar,
 song_id varchar,
@@ -75,40 +75,43 @@ primary key (songplay_id)
 
 user_table_create = ("""
 create table if not exists users (
-user_id int,
+user_id int SORTKEY,
 first_name varchar,
 last_name varchar,
 gender varchar(1),
 level varchar,
 primary key (user_id)
 )
+diststyle ALL;
 """)
 
 song_table_create = ("""
 create table if not exists songs (
-song_id varchar,
+song_id varchar SORTKEY,
 title varchar,
 artist_id varchar not null,
 year int,
 duration float,
 primary key (song_id)
 )
+diststyle ALL;
 """)
 
 artist_table_create = ("""
 create table if not exists artists (
-artist_id varchar,
+artist_id varchar SORTKEY,
 name varchar,
 location varchar,
 latitude float,
 longitude float,
 primary key (artist_id)
 )
+diststyle ALL;
 """)
 
 time_table_create = ("""
 create table if not exists time (
-start_time timestamp,
+start_time timestamp DISTKEY SORTKEY,
 hour int,
 day int,
 week int,
@@ -125,14 +128,25 @@ staging_events_copy = ("""
 COPY stg_events
 FROM {}
 IAM_ROLE {}
-FORMAT AS json {}
-TIMEFORMAT as 'epochmillisecs';
+TIMEFORMAT as 'epochmillisecs'
+TRUNCATECOLUMNS
+BLANKSASNULL
+EMPTYASNULL
+COMPUPDATE OFF
+REGION 'us-west-2'
+FORMAT AS json {};
 """).format(config['S3']['LOG_DATA'],config['IAM_ROLE']['ARN'],config['S3']['LOG_JSONPATH'])
 
 staging_songs_copy = ("""
 COPY stg_songs
 FROM {}
 IAM_ROLE {}
+TIMEFORMAT as 'epochmillisecs'
+TRUNCATECOLUMNS
+BLANKSASNULL
+EMPTYASNULL
+COMPUPDATE OFF
+REGION 'us-west-2'
 FORMAT AS json 'auto';
 """).format(config['S3']['SONG_DATA'],config['IAM_ROLE']['ARN'])
 
