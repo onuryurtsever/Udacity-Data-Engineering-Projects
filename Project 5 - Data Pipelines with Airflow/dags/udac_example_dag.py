@@ -31,7 +31,6 @@ dag = DAG('udac_example_dag',
 
 start_operator = DummyOperator(task_id='Begin_execution', dag=dag)
 
-
 create_all_tables = PostgresOperator(
     task_id='create_all_tables',
     dag=dag,
