@@ -1,4 +1,5 @@
 # Sparkify Project (Data Lake with Apache Spark)
+[![Project Passed](https://img.shields.io/badge/project-passed-success.svg)](https://img.shields.io/badge/project-passed-success.svg)
 
 ## Introduction
 
