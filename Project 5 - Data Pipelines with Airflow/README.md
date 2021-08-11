@@ -26,7 +26,7 @@ The source data resides in S3 and needs to be processed in Sparkify's data wareh
 
 ## Pipeline Diagram
 
-![DAG](https://raw.githubusercontent.com/onuryurtsever/Udacity-Data-Engineering-Projects/main/Project%205%20-%20Data%20Pipelines%20with%20Airflow/images/airflow.png)
+![DAG](https://raw.githubusercontent.com/onuryurtsever/Udacity-Data-Engineering-Projects/main/Project%205%20-%20Data%20Pipelines%20with%20Airflow/images/DAG.png)
 
 ## Structure
 
