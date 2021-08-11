@@ -1,6 +1,5 @@
-# Udacity Data Engineering Nanodegree Program
-
 [![Project Passed](https://img.shields.io/badge/project-passed-success.svg)](https://img.shields.io/badge/project-passed-success.svg)
+ # Udacity Data Engineering Nanodegree Program
 
 Udacity Data Engineering Projects Solutions in 2021
 
