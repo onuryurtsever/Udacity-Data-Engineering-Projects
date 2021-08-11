@@ -1,4 +1,5 @@
 # Data Engineering Capstone Project
+[![Project Passed](https://img.shields.io/badge/project-passed-success.svg)](https://img.shields.io/badge/project-passed-success.svg)
 
 # Data Lake for U.S. Immigration Office
 
