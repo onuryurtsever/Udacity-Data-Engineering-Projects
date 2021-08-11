@@ -2,7 +2,7 @@
 
 # Data Lake for U.S. Immigration Office
 
-#### Project Summary
+## Project Summary
 In this project we are creating data lake about U.S. Immigrants and their behaviours which are related to city, temperature, airport.
 
 The project follows the follow steps:
@@ -74,7 +74,7 @@ First let's check city temperature - number of arrivals relationship.
 I will accept 18 celcius degree as threshold. It means If city is higher than or equal 18, it is warm place else it is cold.
 So I will assign a flag for this cities in query.
 
-![DAG](https://raw.githubusercontent.com/onuryurtsever/Udacity-Data-Engineering-Projects/main/Project%205%20-%20Data%20Pipelines%20with%20Airflow/images/airflow.png
+![IMMIGRATION](https://raw.githubusercontent.com/onuryurtsever/Udacity-Data-Engineering-Projects/main/Project%206%20-%20Capstone%20Project/images/immigration.PNG)
 
 According to results, ratios are nearly so close. So we can't say definitely immigrants choose cities because of climate.
 
