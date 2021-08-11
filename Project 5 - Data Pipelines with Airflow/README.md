@@ -28,7 +28,7 @@ The source data resides in S3 and needs to be processed in Sparkify's data wareh
 
 ![DAG](https://raw.githubusercontent.com/onuryurtsever/Udacity-Data-Engineering-Projects/main/Project%205%20-%20Data%20Pipelines%20with%20Airflow/images/airflow.png)
 
-## Structıre
+## Structure
 
 - **udac_example_dag.py:** Main DAG file which contains configuration and pipeline structure.
 - **sql_queries.py:** It contains sql queries which is used in ETL process.
