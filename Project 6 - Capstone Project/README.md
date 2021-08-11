@@ -1,7 +1,5 @@
-# Data Engineering Capstone Project
-[![Project Passed](https://img.shields.io/badge/project-passed-success.svg)](https://img.shields.io/badge/project-passed-success.svg)
-
 # Data Lake for U.S. Immigration Office
+[![Project Passed](https://img.shields.io/badge/project-passed-success.svg)](https://img.shields.io/badge/project-passed-success.svg)
 
 ## Project Summary
 In this project we are creating data lake about U.S. Immigrants and their behaviours which are related to city, temperature, airport.
