@@ -1,5 +1,7 @@
 # Sparkify Project (Data Pipelines with Airflow)
 
+![DAG](https://raw.githubusercontent.com/onuryurtsever/Udacity-Data-Engineering-Projects/main/Project%205%20-%20Data%20Pipelines%20with%20Airflow/images/airflow.png)
+
 ## Introduction
 
 A music streaming company, Sparkify, has decided that it is time to introduce more automation and monitoring to their data warehouse ETL pipelines and come to the conclusion that the best tool to achieve this is Apache Airflow.
