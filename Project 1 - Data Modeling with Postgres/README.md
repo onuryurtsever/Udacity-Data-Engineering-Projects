@@ -1,4 +1,5 @@
 # Sparkify Project (Data Modeling with Postgres)
+[![Project Passed](https://img.shields.io/badge/project-passed-success.svg)](https://img.shields.io/badge/project-passed-success.svg)
 
 ## Introduction
 
