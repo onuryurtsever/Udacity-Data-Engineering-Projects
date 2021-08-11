@@ -43,8 +43,8 @@ The source data resides in S3 and needs to be processed in Sparkify's data wareh
 
 ### Staging Tables
 
-**staging_events:** It is log dataset which comes from AWS S3 source.
-**staging_songs:** It is song dataset which comes from AWS S3 source.
+* **staging_events:** It is log dataset which comes from AWS S3 source.
+* **staging_songs:** It is song dataset which comes from AWS S3 source.
 
 ### Dimension Tables
 
