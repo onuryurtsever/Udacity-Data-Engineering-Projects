@@ -41,11 +41,10 @@ The source data resides in S3 and needs to be processed in Sparkify's data wareh
 
 ## Schema
 
-### Fact Tables
+### Staging Tables
 
-**songplay:** records in log data associated with song plays
-
-**columns:** songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent
+**staging_events:** It is log dataset which comes from AWS S3 source.
+**staging_songs:** It is song dataset which comes from AWS S3 source.
 
 ### Dimension Tables
 
@@ -64,6 +63,12 @@ The source data resides in S3 and needs to be processed in Sparkify's data wareh
 4- **time:** timestamps of records in songplays broken down into specific units
 
 **columns:** start_time, hour, day, week, month, year, weekday
+
+### Fact Tables
+
+**songplays:** records in log data associated with song plays
+
+**columns:** songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent
 
 ## How to Use
 
