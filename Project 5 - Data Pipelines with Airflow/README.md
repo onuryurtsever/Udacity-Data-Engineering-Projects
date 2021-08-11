@@ -1,4 +1,5 @@
 # Sparkify Project (Data Pipelines with Airflow)
+[![Project Passed](https://img.shields.io/badge/project-passed-success.svg)](https://img.shields.io/badge/project-passed-success.svg)
 
 ![DAG](https://raw.githubusercontent.com/onuryurtsever/Udacity-Data-Engineering-Projects/main/Project%205%20-%20Data%20Pipelines%20with%20Airflow/images/airflow.png)
 
