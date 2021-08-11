@@ -26,7 +26,7 @@ The source data resides in S3 and needs to be processed in Sparkify's data wareh
 
 ## Pipeline Diagram
 
-[DAG](./images/dag.png)
+![DAG](images/DAG.png)
 
 ## Structıre
 
